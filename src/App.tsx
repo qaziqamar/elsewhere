@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, NavLink, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 import ThreeBackground from "./components/ThreeBackground";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -7,8 +7,16 @@ import BlogPost from "./pages/BlogPost";
 import Tracker from "./pages/Tracker";
 
 function Header() {
-  const linkCls = ({ isActive }: { isActive: boolean }) =>
-    `rounded-full px-3.5 py-1.5 text-xs font-extrabold transition ${isActive ? "bg-[#111827] text-white" : "text-[#8A8EA6] hover:text-[#1A1E2E] hover:bg-white"}`;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const scrollTo = (id: string) => {
+    if (location.pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  };
   return (
     <header className="sticky top-0 z-30 border-b border-[#E9DEF8] bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex h-[64px] max-w-[1280px] items-center justify-between px-4 md:px-6">
@@ -20,10 +28,10 @@ function Header() {
           </div>
         </Link>
         <nav className="flex items-center gap-1">
-          <NavLink to="/" className={linkCls}>Home</NavLink>
-          <NavLink to="/about" className={linkCls}>About</NavLink>
-          <NavLink to="/blog" className={linkCls}>Blog</NavLink>
-          <NavLink to="/tracker" className={linkCls}>Tracker</NavLink>
+          <button onClick={() => scrollTo("hero")} className="rounded-full px-3.5 py-1.5 text-xs font-extrabold hover:bg-white text-[#8A8EA6] hover:text-[#1A1E2E]">Home</button>
+          <button onClick={() => scrollTo("about")} className="rounded-full px-3.5 py-1.5 text-xs font-extrabold hover:bg-white text-[#8A8EA6] hover:text-[#1A1E2E]">About</button>
+          <button onClick={() => scrollTo("blog")} className="rounded-full px-3.5 py-1.5 text-xs font-extrabold hover:bg-white text-[#8A8EA6] hover:text-[#1A1E2E]">Blog</button>
+          <button onClick={() => scrollTo("tracker")} className="rounded-full bg-[#111827] px-3.5 py-1.5 text-xs font-extrabold text-white">Tracker</button>
         </nav>
       </div>
     </header>
