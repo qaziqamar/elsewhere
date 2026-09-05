@@ -1,0 +1,7 @@
+/// <reference types="vite/client" />
+import "@react-three/fiber";
+declare global {
+  namespace JSX {
+    interface IntrinsicElements extends import("@react-three/fiber").ThreeElements {}
+  }
+}
