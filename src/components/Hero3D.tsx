@@ -28,15 +28,19 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
 
   return (
     <group ref={group} position={[0, -0.35, 0]}>
-      {/* bean bag */}
+      {/* bean bag - blue/yellow like ref image - background removed, only bag */}
       <mesh position={[0, -0.62, -0.08]} rotation={[0, 0, 0]}>
-        <sphereGeometry args={[1.05, 32, 24]} />
-        <meshStandardMaterial color="#D9CFFD" roughness={0.9} metalness={0.02} />
+        <sphereGeometry args={[1.08, 32, 24]} />
+        <meshStandardMaterial color="#5BA8FF" roughness={0.85} />
       </mesh>
-      {/* bean bag seam */}
-      <mesh position={[0, -0.62, 0.35]} rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[0.72, 0.02, 8, 32]} />
-        <meshStandardMaterial color="#C9B6FF" />
+      <mesh position={[0, -0.52, 0.32]} rotation={[Math.PI / 2, 0, 0]}>
+        <sphereGeometry args={[0.82, 24, 16]} />
+        <meshStandardMaterial color="#FFD93D" roughness={0.6} transparent opacity={0.92} />
+      </mesh>
+      {/* bean bag seam - subtle */}
+      <mesh position={[0, -0.62, 0.38]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.72, 0.015, 8, 32]} />
+        <meshStandardMaterial color="#3B6ECF" transparent opacity={0.5} />
       </mesh>
 
       {/* legs - sitting */}
@@ -71,13 +75,33 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
         </Sphere>
       </group>
 
-      {/* torso */}
-      <RoundedBox args={[0.62, 0.72, 0.48]} radius={0.14} smoothness={3} position={[0, 0.12, 0]}>
-        <meshStandardMaterial color="#FFE9A8" roughness={0.45} />
+      {/* torso - white hoodie with red stripes like ref */}
+      <RoundedBox args={[0.66, 0.74, 0.5]} radius={0.14} smoothness={3} position={[0, 0.12, 0]}>
+        <meshStandardMaterial color="#FFFFFF" roughness={0.7} />
       </RoundedBox>
-      {/* belly white */}
-      <Sphere args={[0.32, 20, 20]} position={[0, -0.04, 0.22]} scale={[1, 1.15, 0.45]}>
-        <meshStandardMaterial color="#FFF7C2" roughness={0.6} />
+      {/* hoodie stripes - red on sleeves */}
+      <mesh position={[-0.28, 0.14, 0.26]} rotation={[0, 0, 1.35]}>
+        <boxGeometry args={[0.18, 0.04, 0.02]} />
+        <meshStandardMaterial color="#EF4444" />
+      </mesh>
+      <mesh position={[0.28, 0.14, 0.26]} rotation={[0, 0, -1.35]}>
+        <boxGeometry args={[0.18, 0.04, 0.02]} />
+        <meshStandardMaterial color="#EF4444" />
+      </mesh>
+      {/* pokeball pattern bottom */}
+      <Sphere args={[0.055, 12, 12]} position={[-0.12, -0.18, 0.26]}>
+        <meshStandardMaterial color="#EF4444" />
+      </Sphere>
+      <Sphere args={[0.055, 12, 12]} position={[0.12, -0.18, 0.26]}>
+        <meshStandardMaterial color="#EF4444" />
+      </Sphere>
+      <mesh position={[0, -0.18, 0.26]}>
+        <boxGeometry args={[0.34, 0.02, 0.015]} />
+        <meshStandardMaterial color="#1A1E2E" />
+      </mesh>
+      {/* belly */}
+      <Sphere args={[0.32, 20, 20]} position={[0, -0.04, 0.24]} scale={[1, 1.15, 0.45]}>
+        <meshStandardMaterial color="#FFFFFF" roughness={0.6} />
       </Sphere>
 
       {/* arms */}
@@ -130,38 +154,36 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
           </mesh>
         </group>
         {/* cheeks */}
-        <Sphere args={[0.07, 14, 14]} position={[-0.27, -0.06, 0.32]}>
+        <Sphere args={[0.065, 14, 14]} position={[-0.27, -0.06, 0.32]}>
           <meshStandardMaterial color="#FF6B6B" emissive="#FF6B6B" emissiveIntensity={0.1} />
         </Sphere>
-        <Sphere args={[0.07, 14, 14]} position={[0.27, -0.06, 0.32]}>
+        <Sphere args={[0.065, 14, 14]} position={[0.27, -0.06, 0.32]}>
           <meshStandardMaterial color="#FF6B6B" emissive="#FF6B6B" emissiveIntensity={0.1} />
         </Sphere>
-        {/* eyes */}
-        <Sphere args={[0.11, 18, 18]} position={[-0.15, 0.08, 0.34]}>
-          <meshStandardMaterial color="#fff" />
-        </Sphere>
-        <Sphere args={[0.068, 14, 14]} position={[-0.145, 0.055, 0.41]}>
-          <meshStandardMaterial color="#1A1E2E" />
-        </Sphere>
-        <Sphere args={[0.028, 10, 10]} position={[-0.12, 0.09, 0.45]}>
-          <meshStandardMaterial color="#fff" emissive="#fff" emissiveIntensity={0.9} />
-        </Sphere>
-        <Sphere args={[0.11, 18, 18]} position={[0.15, 0.08, 0.34]}>
-          <meshStandardMaterial color="#fff" />
-        </Sphere>
-        <Sphere args={[0.068, 14, 14]} position={[0.15, 0.055, 0.41]}>
-          <meshStandardMaterial color="#1A1E2E" />
-        </Sphere>
-        <Sphere args={[0.028, 10, 10]} position={[0.18, 0.09, 0.45]}>
-          <meshStandardMaterial color="#fff" emissive="#fff" emissiveIntensity={0.9} />
-        </Sphere>
+        {/* eyes - tired/bored like ref - half-closed */}
+        <group position={[-0.15, 0.08, 0.34]}>
+          <Sphere args={[0.11, 18, 18]} scale={[1, 0.62, 1]}>
+            <meshStandardMaterial color="#fff" />
+          </Sphere>
+          <Sphere args={[0.068, 14, 14]} position={[0.005, -0.02, 0.07]}>
+            <meshStandardMaterial color="#1A1E2E" />
+          </Sphere>
+        </group>
+        <group position={[0.15, 0.08, 0.34]}>
+          <Sphere args={[0.11, 18, 18]} scale={[1, 0.62, 1]}>
+            <meshStandardMaterial color="#fff" />
+          </Sphere>
+          <Sphere args={[0.068, 14, 14]} position={[0, -0.02, 0.07]}>
+            <meshStandardMaterial color="#1A1E2E" />
+          </Sphere>
+        </group>
         {/* nose */}
         <Sphere args={[0.018, 10, 10]} position={[0, 0.01, 0.39]}>
           <meshStandardMaterial color="#1A1E2E" />
         </Sphere>
-        {/* mouth */}
+        {/* mouth - small bored */}
         <mesh position={[0, -0.08, 0.38]}>
-          <torusGeometry args={[0.07, 0.014, 8, 16, Math.PI]} />
+          <torusGeometry args={[0.055, 0.012, 8, 16, Math.PI]} />
           <meshStandardMaterial color="#1A1E2E" />
         </mesh>
       </group>
