@@ -56,34 +56,40 @@ export default function AppInputList() {
                 transition={{ delay: idx * 0.03, type: "spring", damping: 20, stiffness: 260 }}
                 className={`group flex flex-col gap-3 rounded-2xl border bg-white px-4 py-4 shadow-cute hover:shadow-cute-hover hover:-translate-y-px transition ${tint}`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-xl grid place-items-center text-sm font-extrabold text-white shadow-sm border" style={{ background: app.color === "#fff" ? "#111827" : app.color, color: app.color === "#FFFC00" ? "#111827" : "#fff", borderColor: "rgba(0,0,0,0.08)" }}>
+                <div className="flex items-start gap-3">
+                  <div className="h-9 w-9 flex-shrink-0 rounded-xl grid place-items-center text-sm font-extrabold text-white shadow-sm border" style={{ background: app.color === "#fff" ? "#111827" : app.color, color: app.color === "#FFFC00" ? "#111827" : "#fff", borderColor: "rgba(0,0,0,0.08)" }}>
                     {app.name.slice(0, 1).toUpperCase()}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-sm font-extrabold truncate text-[#1A1E2E]">{app.name}</div>
-                    <div className="flex gap-1 mt-1">
-                      {(["doomscroll", "productive", "neutral"] as const).map((c) => (
-                        <button
-                          key={c}
-                          onClick={() => setCategory(app.id, c)}
-                          className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide border transition ${app.category === c ? (c === "doomscroll" ? "bg-[#FFB6C5] text-[#111827] border-[#FFB6C5]" : c === "productive" ? "bg-[#A6D8F0] text-[#111827] border-[#A6D8F0]" : "bg-[#111827] text-white border-[#111827]") : "border-[#E9E7F5] text-[#8A8EA6] hover:text-[#1A1E2E] hover:border-[#C9B6FF]"}`}
-                        >
-                          {c}
-                        </button>
-                      ))}
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-extrabold truncate text-[#1A1E2E] pr-1">{app.name}</div>
+                        <div className="mt-1.5 flex flex-wrap gap-1">
+                          {(["doomscroll", "productive", "neutral"] as const).map((c) => (
+                            <button
+                              key={c}
+                              onClick={() => setCategory(app.id, c)}
+                              className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide border transition whitespace-nowrap ${app.category === c ? (c === "doomscroll" ? "bg-[#FFB6C5] text-[#111827] border-[#FFB6C5]" : c === "productive" ? "bg-[#A6D8F0] text-[#111827] border-[#A6D8F0]" : "bg-[#111827] text-white border-[#111827]") : "border-[#E9E7F5] text-[#8A8EA6] hover:text-[#1A1E2E] hover:border-[#C9B6FF]"}`}
+                            >
+                              {c}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="text-right flex-shrink-0 ml-2">
+                        <div className="text-sm font-mono font-extrabold text-[#1A1E2E] whitespace-nowrap">{formatHM(mins)}</div>
+                        <div className="text-[11px] font-bold text-[#8A8EA6] whitespace-nowrap">{mins} min</div>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-sm font-mono font-extrabold text-[#1A1E2E]">{formatHM(mins)}</div>
-                    <div className="text-[11px] font-bold text-[#8A8EA6]">{mins} min</div>
+                  <div className="flex flex-shrink-0 items-center gap-1 pt-0.5">
+                    {!["yt","netflix","x","linkedin","meta","telegram","whatsapp","instagram","snapchat"].includes(app.id) && (
+                      <button onClick={() => remove(app.id)} aria-label={`Remove ${app.name}`} className="rounded-full p-1.5 text-[#8A8EA6] hover:text-red-500 hover:bg-red-500/10 transition">
+                        <Trash2 size={16} />
+                      </button>
+                    )}
+                    <span className="grid h-7 w-7 place-items-center rounded-full bg-[#111827] text-white flex-shrink-0"><ArrowUpRight size={14} /></span>
                   </div>
-                  {!["yt","netflix","x","linkedin","meta","telegram","whatsapp","instagram","snapchat"].includes(app.id) && (
-                    <button onClick={() => remove(app.id)} aria-label={`Remove ${app.name}`} className="rounded-full p-1.5 text-[#8A8EA6] hover:text-red-500 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition">
-                      <Trash2 size={16} />
-                    </button>
-                  )}
-                  <span className="hidden h-7 w-7 place-items-center rounded-full bg-[#111827] text-white md:grid"><ArrowUpRight size={14} /></span>
                 </div>
 
                 <div className="grid gap-3 md:grid-cols-[1fr_auto] items-center">
