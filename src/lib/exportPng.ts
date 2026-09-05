@@ -4,7 +4,7 @@ export async function exportNodeToPng(node: HTMLElement, filename: string) {
   const dataUrl = await toPng(node, {
     cacheBust: true,
     pixelRatio: 2,
-    backgroundColor: "#080C18",
+    backgroundColor: "#FFFFFF",
     // inline fonts for crisp export
     fontEmbedCSS: undefined,
   });

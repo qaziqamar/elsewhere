@@ -1,68 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&family=JetBrains+Mono:wght@600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --bg: #080C18;
-  --surface: rgba(30, 41, 59, 0.6);
-  --border: rgba(255,255,255,0.08);
-  --text: #E2E8F0;
-  --muted: #94A3B8;
-  --violet: #8B5CF6;
-  --violet-strong: #7C3AED;
-  --cyan: #06B6D4;
-  --orange: #F97316;
-  --pink: #EC4899;
+  --bg: #F2F3F8;
+  --surface: #FFFFFF;
+  --border: #E9E7F5;
+  --border-strong: #E9DEF8;
+  --text: #1A1E2E;
+  --muted: #8A8EA6;
+  --sub: #C4C7D8;
+  --lavender: #C9B6FF;
+  --lavender-light: #D9CFFD;
+  --sky: #A6D8F0;
+  --sky-light: #BFE6F7;
+  --blush: #FFB6C5;
+  --blush-light: #FFD7DE;
+  --mint: #B8E8D8;
+  --mint-light: #D6F0E6;
+  --butter: #FFE9A8;
+  --ink: #111827;
 }
 
-* { scrollbar-width: thin; scrollbar-color: rgba(139,92,246,0.3) transparent; }
+* { scrollbar-width: thin; scrollbar-color: rgba(201,182,255,0.5) transparent; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Nunito','Plus Jakarta Sans',system-ui,sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 #root { min-height: 100vh; }
 
-/* grain overlay */
+/* cute grain very subtle */
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E");
 }
 
-/* custom slider */
+/* pastel slider */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 6px;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.1);
+  background: #E9E7F5;
   outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(139,92,246,0.25), 0 2px 8px rgba(0,0,0,0.3);
+  background: #111827;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(26,30,46,0.12);
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s;
 }
-input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(139,92,246,0.3); }
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.12); }
 input[type="range"]::-moz-range-thumb {
-  width: 18px; height: 18px; border: none; border-radius: 50%; background: #fff; cursor: pointer;
+  width: 20px; height: 20px; border: 3px solid #fff; border-radius: 50%; background: #111827; cursor: pointer;
 }
+
+/* cute animations */
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+@keyframes blink { 0%,96%,100% { transform: scaleY(1) } 97% { transform: scaleY(0.1) } }
+@keyframes pop { 0% { transform: scale(0.96); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pop { animation: pop 0.5s ease-out; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* dark fallback if user prefers dark */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #080C18;
+    --surface: rgba(255,255,255,0.04);
+    --border: rgba(201,182,255,0.15);
+    --text: #E2E8F0;
+    --muted: #8A8EA6;
+  }
+  body { background: #080C18; color: #E2E8F0; }
 }

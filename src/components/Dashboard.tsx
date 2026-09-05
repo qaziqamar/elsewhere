@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, HelpCircle, RotateCcw, Sparkles } from "lucide-react";
+import { Download, HelpCircle, RotateCcw, Sparkles, ArrowRight } from "lucide-react";
 import AppInputList from "./AppInputList";
 import AnalyticsCharts from "./AnalyticsCharts";
 import GuideModal from "./GuideModal";
 import ExportCard from "./ExportCard";
 import { exportNodeToPng } from "../lib/exportPng";
 import { useScreenTimeStore } from "../store/useScreenTimeStore";
+import { StarSpike, Wavy, CloudPuff } from "./CuteMascot";
 
 export default function Dashboard() {
   const [guideOpen, setGuideOpen] = useState(false);
@@ -29,86 +30,85 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="mx-auto max-w-[1280px] px-4 pb-10 pt-6 md:px-6 md:pt-8">
-      {/* hero — left-aligned split, not centered (Taste anti-center) */}
-      <div className="grid items-center gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1 text-xs font-bold text-violet-200">
-            <Sparkles size={14} /> Premium tracker · No signup · Private on device
+    <div className="mx-auto max-w-[1280px] px-4 pb-6 pt-6 md:px-6 md:pt-8">
+      {/* hero — pastel cute, asymmetric, mascots floating */}
+      <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD] px-3 py-1.5 text-xs font-extrabold text-[#1A1E2E]">
+            <Sparkles size={14} className="text-[#1A1E2E]" /> Cute tracker · No signup · Private on device
           </div>
           <h1 className="mt-4 text-[30px] font-extrabold leading-[0.95] tracking-tight md:text-[44px]">
-            How much of your <span className="bg-gradient-to-r from-violet-400 via-cyan-300 to-orange-400 bg-clip-text text-transparent">life</span> did you scroll away this week?
+            How much of your <span className="rounded-xl bg-[#D9CFFD] px-2 py-0.5">life</span> did you scroll away this week?
           </h1>
-          <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-slate-400">
-            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a PNG to hold yourself accountable.
+          <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#8A8EA6]">
+            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a cute PNG to hold yourself accountable.
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">
-            <button onClick={() => setGuideOpen(true)} className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-semibold backdrop-blur hover:bg-white/10 transition">
+            <button onClick={() => setGuideOpen(true)} className="inline-flex items-center gap-2 rounded-full border border-[#E9E7F5] bg-white px-4 py-2.5 text-sm font-bold shadow-cute hover:shadow-cute-hover hover:-translate-y-px transition">
               <HelpCircle size={16} /> Where do I find my screen time?
             </button>
-            <button onClick={() => reset()} className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-bold text-black hover:bg-slate-100 transition">
+            <button onClick={() => reset()} className="inline-flex items-center gap-2 rounded-full bg-white border border-[#E9E7F5] px-4 py-2.5 text-sm font-bold shadow-cute hover:bg-[#F2F3F8] transition">
               <RotateCcw size={16} /> Reset week
             </button>
             <button
               onClick={handleExport}
               disabled={exporting}
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 px-5 py-2.5 text-sm font-bold text-white shadow-glow hover:opacity-95 disabled:opacity-50 transition"
+              className="inline-flex items-center gap-2 rounded-full bg-[#C9B6FF] px-5 py-2.5 text-sm font-extrabold text-[#111827] shadow-cute hover:bg-[#B8A6F0] hover:-translate-y-px disabled:opacity-50 transition"
             >
-              <Download size={16} /> {exporting ? "Exporting..." : "Download PNG"}
+              <Download size={16} /> {exporting ? "Exporting..." : "Download PNG"} <ArrowRight size={14} />
             </button>
           </div>
-          <p className="mt-3 text-xs text-slate-500">Reclaim your hours from the digital abyss — one week at a time.</p>
+          <p className="mt-3 text-xs font-semibold text-[#8A8EA6]">Reclaim your hours from the digital abyss — one cute check at a time.</p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.08 }}
+          initial={{ opacity: 0, y: 12, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1, type: "spring", damping: 20 }}
           className="relative"
         >
-          {/* subtle visual — not a centered hero card */}
-          <div className="rounded-[28px] border border-white/10 bg-gradient-to-br from-violet-600/20 via-[#0F172A] to-cyan-500/15 p-5 shadow-2xl backdrop-blur">
-            <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-slate-400">
-              <span>Live preview</span><span className="text-emerald-300">● Private</span>
+          <div className="relative overflow-hidden rounded-[28px] border border-[#E9DEF8] bg-white p-5 shadow-cute">
+            <StarSpike className="absolute -right-2 -top-2 h-[84px] w-[84px] rotate-6 hidden md:block" />
+            <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-[#8A8EA6]">
+              <span>Live preview · cute</span><span className="inline-flex items-center gap-1 text-[#6BCB77]"><span className="h-2 w-2 rounded-full bg-[#6BCB77] animate-pulse" /> Private</span>
             </div>
             <div className="mt-4 space-y-3">
-              <div className="flex items-center gap-3 rounded-2xl bg-black/25 border border-white/10 p-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-orange-400 grid place-items-center font-bold">S</div>
-                <div className="flex-1"><div className="text-sm font-bold">Scrolless</div><div className="text-xs text-slate-400">Weekly accountability report</div></div>
-                <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="flex items-center gap-3 rounded-2xl border border-[#E9E7F5] bg-[#F2F3F8] p-3">
+                <div className="h-10 w-10 rounded-xl bg-[#C9B6FF] grid place-items-center font-extrabold text-[#111827]">S</div>
+                <div className="flex-1"><div className="text-sm font-extrabold">Scrolless</div><div className="text-xs font-semibold text-[#8A8EA6]">Weekly accountability report</div></div>
+                <Wavy className="h-10 w-10 hidden sm:block" />
               </div>
               <div className="grid grid-cols-3 gap-2 text-center">
                 {[
-                  { k: "YouTube", v: "6h 30m" },
-                  { k: "Instagram", v: "4h 10m" },
-                  { k: "LinkedIn", v: "1h 05m" },
+                  { k: "YouTube", v: "6h 30m", bg: "bg-[#FFD7DE] border-[#FFD7DE]" },
+                  { k: "Instagram", v: "4h 10m", bg: "bg-[#D9CFFD] border-[#E9DEF8]" },
+                  { k: "LinkedIn", v: "1h 05m", bg: "bg-[#BFE6F7] border-[#C8E6F2]" },
                 ].map((s) => (
-                  <div key={s.k} className="rounded-xl bg-white/5 border border-white/10 px-2 py-3">
-                    <div className="text-xs text-slate-400">{s.k}</div>
-                    <div className="text-sm font-mono font-bold">{s.v}</div>
+                  <div key={s.k} className={`rounded-2xl border px-2 py-3 ${s.bg}`}>
+                    <div className="text-xs font-bold text-[#1A1E2E]/70">{s.k}</div>
+                    <div className="text-sm font-mono font-extrabold text-[#1A1E2E]">{s.v}</div>
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl bg-gradient-to-r from-violet-600 to-cyan-500 p-[1px]">
-                <div className="rounded-xl bg-[#0F172A] px-4 py-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold">Download PNG of result</span>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-black">PNG 2x</span>
-                </div>
+              <div className="flex items-center justify-between rounded-2xl bg-[#111827] px-4 py-3 text-white">
+                <span className="text-sm font-bold">Download PNG of result</span>
+                <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-[#111827]">PNG 2x →</span>
               </div>
             </div>
           </div>
+          <CloudPuff className="absolute -bottom-6 -left-4 h-[66px] w-[90px] hidden md:block" />
         </motion.div>
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 }} className="mt-8 grid gap-6 lg:grid-cols-[420px_1fr]">
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }} className="mt-8 grid gap-6 lg:grid-cols-[420px_1fr]">
         <AppInputList />
         <AnalyticsCharts />
       </motion.div>
 
-      <div className="mt-6">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-bold">Export preview — this is what your PNG will look like</h3>
-          <span className="text-xs text-slate-500">2x crisp · dark bg · shareable</span>
+      <div className="mt-8">
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-sm font-extrabold flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#C9B6FF]" /> Export preview — this is what your PNG will capture</h3>
+          <span className="rounded-full border border-[#E9E7F5] bg-white px-3 py-1 text-xs font-bold text-[#8A8EA6]">2x crisp · pastel · shareable</span>
         </div>
         <div className="mt-3 max-w-[720px]">
           <ExportCard ref={exportRef} />
@@ -116,10 +116,6 @@ export default function Dashboard() {
       </div>
 
       <GuideModal open={guideOpen} onClose={() => setGuideOpen(false)} />
-
-      <footer className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-slate-500">
-        Built with React + TypeScript · Tailwind · Framer Motion · Recharts · Three.js — Scrolless
-      </footer>
     </div>
   );
 }
