@@ -44,12 +44,12 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
       <group position={[-0.22, -0.32, 0.28]}>
         <mesh rotation={[Math.PI / 2.6, 0, -0.18]}>
           <capsuleGeometry args={[0.11, 0.42, 8, 14]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         {/* shin */}
         <mesh position={[0.04, -0.22, 0.08]} rotation={[Math.PI / 2.2, 0, 0]}>
           <capsuleGeometry args={[0.09, 0.34, 8, 14]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         {/* foot */}
         <Sphere args={[0.11, 16, 16]} position={[0.08, -0.42, 0.12]}>
@@ -60,11 +60,11 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
       <group position={[0.22, -0.32, 0.28]}>
         <mesh rotation={[Math.PI / 2.6, 0, 0.18]}>
           <capsuleGeometry args={[0.11, 0.42, 8, 14]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         <mesh position={[-0.04, -0.22, 0.08]} rotation={[Math.PI / 2.2, 0, 0]}>
           <capsuleGeometry args={[0.09, 0.34, 8, 14]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         <Sphere args={[0.11, 16, 16]} position={[-0.08, -0.42, 0.12]}>
           <meshStandardMaterial color="#8B6A2B" roughness={0.7} />
@@ -73,7 +73,7 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
 
       {/* torso */}
       <RoundedBox args={[0.62, 0.72, 0.48]} radius={0.14} smoothness={3} position={[0, 0.12, 0]}>
-        <meshStandardMaterial color="#FFD93D" roughness={0.45} />
+        <meshStandardMaterial color="#FFE9A8" roughness={0.45} />
       </RoundedBox>
       {/* belly white */}
       <Sphere args={[0.32, 20, 20]} position={[0, -0.04, 0.22]} scale={[1, 1.15, 0.45]}>
@@ -85,34 +85,34 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
       <group position={[-0.38, 0.22, 0.12]}>
         <mesh position={[-0.08, -0.08, 0.1]} rotation={[0.6, 0, -0.55]}>
           <capsuleGeometry args={[0.07, 0.3, 8, 12]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         {/* hand */}
         <Sphere args={[0.075, 14, 14]} position={[-0.12, -0.24, 0.22]}>
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </Sphere>
       </group>
       {/* right arm */}
       <group position={[0.38, 0.22, 0.12]}>
         <mesh position={[0.08, -0.08, 0.1]} rotation={[0.6, 0, 0.55]}>
           <capsuleGeometry args={[0.07, 0.3, 8, 12]} />
-          <meshStandardMaterial color="#FFD93D" roughness={0.5} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.5} />
         </mesh>
         <Sphere args={[0.075, 14, 14]} position={[0.12, -0.24, 0.22]}>
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </Sphere>
       </group>
 
       {/* head */}
       <group ref={head} position={[0, 0.62, 0.12]}>
         <Sphere args={[0.42, 32, 24]}>
-          <meshStandardMaterial color="#FFD93D" roughness={0.45} />
+          <meshStandardMaterial color="#FFE9A8" roughness={0.45} />
         </Sphere>
-        {/* ears */}
+        {/* ears - pastel to match theme */}
         <group position={[-0.28, 0.48, -0.04]} rotation={[0, 0, -0.22]}>
           <mesh>
             <coneGeometry args={[0.13, 0.46, 14]} />
-            <meshStandardMaterial color="#FFD93D" />
+            <meshStandardMaterial color="#FFE9A8" />
           </mesh>
           <mesh position={[0, 0.16, 0]}>
             <coneGeometry args={[0.055, 0.14, 14]} />
@@ -122,7 +122,7 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
         <group position={[0.28, 0.48, -0.04]} rotation={[0, 0, 0.22]}>
           <mesh>
             <coneGeometry args={[0.13, 0.46, 14]} />
-            <meshStandardMaterial color="#FFD93D" />
+            <meshStandardMaterial color="#FFE9A8" />
           </mesh>
           <mesh position={[0, 0.16, 0]}>
             <coneGeometry args={[0.055, 0.14, 14]} />
@@ -185,26 +185,26 @@ function SittingSparky({ mouse }: { mouse: React.MutableRefObject<{ x: number; y
         </mesh>
         {/* thumb */}
         <Sphere args={[0.045, 12, 12]} position={[0.12, -0.04, 0.04]}>
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </Sphere>
         <Sphere args={[0.045, 12, 12]} position={[-0.12, -0.04, 0.04]}>
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </Sphere>
       </group>
 
-      {/* tail behind bean bag */}
+      {/* tail behind bean bag - pastel */}
       <group position={[0, -0.38, -0.72]} rotation={[0, 0.85, 0]}>
         <mesh position={[0.18, 0.12, 0]}>
           <boxGeometry args={[0.12, 0.38, 0.04]} />
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </mesh>
         <mesh position={[-0.06, -0.1, 0]} rotation={[0, 0, 0.55]}>
           <boxGeometry args={[0.1, 0.3, 0.04]} />
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </mesh>
         <mesh position={[0.02, 0.02, 0]} rotation={[0, 0, -0.7]}>
           <boxGeometry args={[0.14, 0.05, 0.04]} />
-          <meshStandardMaterial color="#FFD93D" />
+          <meshStandardMaterial color="#FFE9A8" />
         </mesh>
       </group>
     </group>
@@ -218,7 +218,7 @@ export default function Hero3D() {
     return (
       <div className="h-[460px] w-full max-w-[480px] flex items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto h-24 w-24 rounded-3xl bg-[#FFD93D] grid place-items-center text-4xl shadow-cute">⚡</div>
+          <div className="mx-auto h-24 w-24 rounded-3xl bg-[#FFE9A8] grid place-items-center text-4xl shadow-cute">⚡</div>
           <div className="mt-3 text-sm font-extrabold">Sparky on bean bag</div>
         </div>
       </div>
