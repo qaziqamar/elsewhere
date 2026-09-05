@@ -7,7 +7,7 @@ import GuideModal from "./GuideModal";
 import ExportCard from "./ExportCard";
 import { exportNodeToPng } from "../lib/exportPng";
 import { useScreenTimeStore } from "../store/useScreenTimeStore";
-import { StarSpike, Wavy, CloudPuff } from "./CuteMascot";
+import { StarSpike, CloudPuff } from "./CuteMascot";
 
 export default function Dashboard() {
   const [guideOpen, setGuideOpen] = useState(false);
@@ -30,20 +30,19 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="mx-auto max-w-[1280px] px-4 pb-6 pt-6 md:px-6 md:pt-8">
-      {/* hero - pastel, asymmetric, mascots floating */}
-      <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+    <div className="relative mx-auto max-w-[1280px] px-4 pb-6 pt-6 md:px-6 md:pt-8">
+      <div className="mx-auto max-w-[720px] text-center">
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD] px-3 py-1.5 text-xs font-extrabold text-[#1A1E2E]">
-            <Sparkles size={14} className="text-[#1A1E2E]" /> Tracker · No signup · Private on device
+            <Sparkles size={14} className="text-[#1A1E2E]" /> Tracker · No signup · Free to use
           </div>
           <h1 className="mt-4 text-[30px] font-extrabold leading-[0.95] tracking-tight md:text-[44px]">
-            How much of your <span className="rounded-xl bg-[#D9CFFD] px-2 py-0.5">life</span> did you scroll away this week?
+            How much of your life did you scroll away this week?
           </h1>
-          <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#8A8EA6]">
-            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a PNG to hold yourself accountable.
+          <p className="mx-auto mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#8A8EA6]">
+            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a PNG to keep tracking. We do not save your data - download the PNG to keep it; it includes the current date.
           </p>
-          <div className="mt-5 flex flex-wrap gap-2.5">
+          <div className="mt-5 flex flex-wrap justify-center gap-2.5">
             <button onClick={() => setGuideOpen(true)} className="inline-flex items-center gap-2 rounded-full border border-[#E9E7F5] bg-white px-4 py-2.5 text-sm font-bold shadow-cute hover:shadow-cute-hover hover:-translate-y-px transition">
               <HelpCircle size={16} /> Where do I find my screen time?
             </button>
@@ -60,45 +59,9 @@ export default function Dashboard() {
           </div>
           <p className="mt-3 text-xs font-semibold text-[#8A8EA6]">Reclaim your hours from the digital abyss - one check at a time.</p>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1, type: "spring", damping: 20 }}
-          className="relative"
-        >
-          <div className="relative overflow-hidden rounded-[28px] border border-[#E9DEF8] bg-white p-5 shadow-cute">
-            <StarSpike className="absolute -right-2 -top-2 h-[84px] w-[84px] rotate-6 hidden md:block" />
-            <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-[#8A8EA6]">
-              <span>Live preview</span><span className="inline-flex items-center gap-1 text-[#6BCB77]"><span className="h-2 w-2 rounded-full bg-[#6BCB77] animate-pulse" /> Private</span>
-            </div>
-            <div className="mt-4 space-y-3">
-              <div className="flex items-center gap-3 rounded-2xl border border-[#E9E7F5] bg-[#F2F3F8] p-3">
-                <div className="h-10 w-10 rounded-xl bg-[#C9B6FF] grid place-items-center font-extrabold text-[#111827]">S</div>
-                <div className="flex-1"><div className="text-sm font-extrabold">Scrolless</div><div className="text-xs font-semibold text-[#8A8EA6]">Weekly accountability report</div></div>
-                <Wavy className="h-10 w-10 hidden sm:block" />
-              </div>
-              <div className="grid grid-cols-3 gap-2 text-center">
-                {[
-                  { k: "YouTube", v: "6h 30m", bg: "bg-[#FFD7DE] border-[#FFD7DE]" },
-                  { k: "Instagram", v: "4h 10m", bg: "bg-[#D9CFFD] border-[#E9DEF8]" },
-                  { k: "LinkedIn", v: "1h 05m", bg: "bg-[#BFE6F7] border-[#C8E6F2]" },
-                ].map((s) => (
-                  <div key={s.k} className={`rounded-2xl border px-2 py-3 ${s.bg}`}>
-                    <div className="text-xs font-bold text-[#1A1E2E]/70">{s.k}</div>
-                    <div className="text-sm font-mono font-extrabold text-[#1A1E2E]">{s.v}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex items-center justify-between rounded-2xl bg-[#111827] px-4 py-3 text-white">
-                <span className="text-sm font-bold">Download PNG of result</span>
-                <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-[#111827]">PNG 2x →</span>
-              </div>
-            </div>
-          </div>
-          <CloudPuff className="absolute -bottom-6 -left-4 h-[66px] w-[90px] hidden md:block" />
-        </motion.div>
       </div>
+      <div className="absolute right-6 top-24 hidden lg:block"><StarSpike className="h-[72px] w-[72px] rotate-6" /></div>
+      <div className="absolute left-6 top-36 hidden lg:block"><CloudPuff className="h-[56px] w-[76px]" /></div>
 
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.18 }} className="mt-8 grid gap-6 lg:grid-cols-[420px_1fr]">
         <AppInputList />

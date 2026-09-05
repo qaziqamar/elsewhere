@@ -15,7 +15,6 @@ export default function App() {
             </div>
           </div>
           <nav className="hidden items-center gap-2 md:flex">
-            <span className="rounded-full border border-[#E9E7F5] bg-[#F2F3F8] px-3 py-1.5 text-xs font-bold text-[#1A1E2E]">Private · on-device</span>
             <span className="rounded-full bg-[#111827] px-3 py-1.5 text-xs font-bold text-white">Weekly</span>
           </nav>
         </div>
