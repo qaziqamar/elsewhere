@@ -5,13 +5,14 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
   return (
     <AnimatePresence>
       {open && (
-        <>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" aria-hidden={!open}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            aria-hidden
           />
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -20,7 +21,9 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
             transition={{ type: "spring", damping: 24, stiffness: 260 }}
             role="dialog"
             aria-modal="true"
-            className="fixed left-1/2 top-1/2 z-50 w-[92vw] max-w-[640px] -translate-x-1/2 -translate-y-1/2 rounded-[20px] border border-white/10 bg-[#0F172A] p-6 shadow-2xl md:p-8"
+            aria-labelledby="guide-title"
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-[640px] max-h-[90dvh] overflow-y-auto rounded-[20px] border border-white/10 bg-[#0F172A] p-6 shadow-2xl md:p-8 overscroll-contain"
           >
             <button
               onClick={onClose}
@@ -29,7 +32,7 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
             >
               <X size={16} />
             </button>
-            <h3 className="text-xl font-bold">How to find your weekly screen time</h3>
+            <h3 id="guide-title" className="text-xl font-bold pr-8">How to find your weekly screen time</h3>
             <p className="mt-1 text-sm text-slate-400">30-second check — then paste numbers below.</p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -60,7 +63,7 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
               Got it — let me track
             </button>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );
