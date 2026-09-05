@@ -1,4 +1,4 @@
-// Live cartoon hero - reliable Three.js - blue mascot + phone + clock - live animation
+// Live cartoon hero - Pikachu-like cheap variant - yellow sparky + phone + clock - live animation - original, not licensed
 import { Canvas, useFrame } from "@react-three/fiber";
 import { RoundedBox, Sphere } from "@react-three/drei";
 import { useRef, Suspense } from "react";
@@ -26,46 +26,89 @@ function Mascot({ mouse }: { mouse: React.MutableRefObject<{ x: number; y: numbe
 
   return (
     <group ref={group}>
-      {/* body - rounded blob with spikes as cones */}
-      <Sphere args={[0.72, 32, 32]}>
-        <meshStandardMaterial color="#2EB8FF" roughness={0.5} />
+      {/* body - chibi yellow sparky, cheap pikachu-like original */}
+      <Sphere args={[0.68, 32, 32]}>
+        <meshStandardMaterial color="#FFD93D" roughness={0.45} />
       </Sphere>
-      {/* spikes */}
-      {[
-        [0, 0.95, 0],
-        [0.7, 0.6, 0.3],
-        [-0.7, 0.6, 0.3],
-        [0.9, -0.1, 0],
-        [-0.9, -0.1, 0],
-        [0, -0.75, 0.2],
-        [0.45, 0.85, -0.3],
-        [-0.45, 0.85, -0.3],
-      ].map((p, i) => (
-        <mesh key={i} position={p as [number, number, number]} rotation={[0, 0, Math.atan2(p[0], p[1])]}>
-          <coneGeometry args={[0.18, 0.42, 12]} />
-          <meshStandardMaterial color="#2EB8FF" roughness={0.5} />
+      {/* belly */}
+      <Sphere args={[0.42, 24, 24]} position={[0, -0.18, 0.42]} scale={[1, 0.85, 0.5]}>
+        <meshStandardMaterial color="#FFF7C2" roughness={0.6} />
+      </Sphere>
+      {/* ears - pointy with black tips */}
+      <group position={[-0.38, 0.72, 0.12]} rotation={[0, 0, -0.18]}>
+        <mesh>
+          <coneGeometry args={[0.16, 0.58, 14]} />
+          <meshStandardMaterial color="#FFD93D" roughness={0.45} />
         </mesh>
-      ))}
-
-      {/* eyes */}
-      <Sphere args={[0.18, 20, 20]} position={[-0.22, 0.18, 0.68]}>
+        <mesh position={[0, 0.22, 0]}>
+          <coneGeometry args={[0.07, 0.18, 14]} />
+          <meshStandardMaterial color="#1A1E2E" />
+        </mesh>
+        <mesh position={[0, -0.12, 0.02]}>
+          <planeGeometry args={[0.04, 0.08]} />
+          <meshStandardMaterial color="#FF8FA3" side={THREE.DoubleSide} />
+        </mesh>
+      </group>
+      <group position={[0.38, 0.72, 0.12]} rotation={[0, 0, 0.18]}>
+        <mesh>
+          <coneGeometry args={[0.16, 0.58, 14]} />
+          <meshStandardMaterial color="#FFD93D" roughness={0.45} />
+        </mesh>
+        <mesh position={[0, 0.22, 0]}>
+          <coneGeometry args={[0.07, 0.18, 14]} />
+          <meshStandardMaterial color="#1A1E2E" />
+        </mesh>
+      </group>
+      {/* cheeks - red */}
+      <Sphere args={[0.09, 16, 16]} position={[-0.42, -0.04, 0.62]}>
+        <meshStandardMaterial color="#FF6B6B" roughness={0.6} emissive="#FF6B6B" emissiveIntensity={0.12} />
+      </Sphere>
+      <Sphere args={[0.09, 16, 16]} position={[0.42, -0.04, 0.62]}>
+        <meshStandardMaterial color="#FF6B6B" roughness={0.6} emissive="#FF6B6B" emissiveIntensity={0.12} />
+      </Sphere>
+      {/* eyes - big kawaii */}
+      <Sphere args={[0.17, 20, 20]} position={[-0.22, 0.16, 0.64]}>
         <meshStandardMaterial color="#fff" />
       </Sphere>
-      <Sphere args={[0.09, 16, 16]} position={[-0.22, 0.15, 0.82]}>
-        <meshStandardMaterial color="#0A1A2F" />
+      <Sphere args={[0.1, 16, 16]} position={[-0.20, 0.12, 0.77]}>
+        <meshStandardMaterial color="#1A1E2E" />
       </Sphere>
-      <Sphere args={[0.18, 20, 20]} position={[0.22, 0.18, 0.68]}>
+      <Sphere args={[0.035, 10, 10]} position={[-0.16, 0.18, 0.84]}>
+        <meshStandardMaterial color="#fff" emissive="#fff" emissiveIntensity={0.9} />
+      </Sphere>
+      <Sphere args={[0.17, 20, 20]} position={[0.22, 0.16, 0.64]}>
         <meshStandardMaterial color="#fff" />
       </Sphere>
-      <Sphere args={[0.09, 16, 16]} position={[0.22, 0.15, 0.82]}>
-        <meshStandardMaterial color="#0A1A2F" />
+      <Sphere args={[0.1, 16, 16]} position={[0.22, 0.12, 0.77]}>
+        <meshStandardMaterial color="#1A1E2E" />
       </Sphere>
-
+      <Sphere args={[0.035, 10, 10]} position={[0.26, 0.18, 0.84]}>
+        <meshStandardMaterial color="#fff" emissive="#fff" emissiveIntensity={0.9} />
+      </Sphere>
+      {/* nose tiny */}
+      <Sphere args={[0.02, 10, 10]} position={[0, 0.06, 0.73]}>
+        <meshStandardMaterial color="#1A1E2E" />
+      </Sphere>
       {/* smile */}
-      <mesh position={[0, -0.02, 0.72]} rotation={[0, 0, 0]}>
-        <torusGeometry args={[0.12, 0.022, 8, 20, Math.PI]} />
-        <meshStandardMaterial color="#0A1A2F" />
+      <mesh position={[0, -0.06, 0.71]} rotation={[0, 0, 0]}>
+        <torusGeometry args={[0.1, 0.018, 8, 20, Math.PI]} />
+        <meshStandardMaterial color="#1A1E2E" />
       </mesh>
+      {/* tail - lightning bolt behind */}
+      <group position={[0, -0.32, -0.52]} rotation={[0, 0.9, 0]}>
+        <mesh position={[0.22, 0.18, 0]}>
+          <boxGeometry args={[0.14, 0.42, 0.04]} />
+          <meshStandardMaterial color="#FFD93D" />
+        </mesh>
+        <mesh position={[-0.08, -0.1, 0]} rotation={[0, 0, 0.6]}>
+          <boxGeometry args={[0.12, 0.34, 0.04]} />
+          <meshStandardMaterial color="#FFD93D" />
+        </mesh>
+        <mesh position={[0.02, 0.04, 0]} rotation={[0, 0, -0.75]}>
+          <boxGeometry args={[0.18, 0.06, 0.04]} />
+          <meshStandardMaterial color="#FFD93D" />
+        </mesh>
+      </group>
 
       {/* phone */}
       <group position={[0.62, -0.12, 0.55]} rotation={[0, -0.22, 0.06]}>
@@ -122,7 +165,7 @@ export default function Hero3D() {
     return (
       <div className="h-[380px] w-full max-w-[460px] rounded-[24px] border border-[#E9DEF8] bg-white shadow-cute grid place-items-center p-6 text-center">
         <div>
-          <div className="mx-auto h-20 w-20 rounded-2xl bg-[#2EB8FF] grid place-items-center text-3xl">★</div>
+          <div className="mx-auto h-20 w-20 rounded-2xl bg-[#FFD93D] grid place-items-center text-3xl">⚡</div>
           <div className="mt-3 text-sm font-extrabold">Live animation paused</div>
           <div className="text-xs font-semibold text-[#8A8EA6]">Reduced motion enabled</div>
         </div>
