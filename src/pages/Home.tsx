@@ -9,9 +9,9 @@ export default function Home() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="snap-y snap-mandatory">
-      {/* HERO — snap start */}
-      <section id="hero" className="relative snap-start min-h-[calc(100dvh-64px)] flex flex-col justify-center mx-auto max-w-[1280px] px-4 py-10 md:px-6 md:py-14 scroll-mt-16">
+    <div>
+      {/* HERO */}
+      <section id="hero" className="relative flex flex-col justify-center mx-auto max-w-[1280px] px-4 py-10 md:px-6 md:py-14 scroll-mt-16">
         <div className="absolute right-6 top-10 hidden lg:block"><StarSpike className="h-[72px] w-[72px] rotate-6" /></div>
         <div className="absolute left-6 top-40 hidden lg:block"><CloudPuff className="h-[56px] w-[76px]" /></div>
 
@@ -58,8 +58,8 @@ export default function Home() {
         </button>
       </section>
 
-      {/* ABOUT — snap start */}
-      <section id="about" className="snap-start min-h-[100dvh] flex items-center bg-white/40 backdrop-blur scroll-mt-16 border-y border-[#E9E7F5]">
+      {/* ABOUT */}
+      <section id="about" className="flex items-center scroll-mt-16 py-6">
         <div className="mx-auto max-w-[880px] w-full px-4 py-10 md:px-6">
           <div className="rounded-[20px] border border-[#E9DEF8] bg-white p-6 md:p-8 shadow-cute">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD]/40 px-3 py-1 text-xs font-extrabold">About Scrolless</div>
@@ -88,8 +88,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG — snap start */}
-      <section id="blog" className="snap-start min-h-[100dvh] flex items-center scroll-mt-16">
+      {/* BLOG */}
+      <section id="blog" className="flex items-center scroll-mt-16 py-6">
         <div className="mx-auto max-w-[1080px] w-full px-4 py-10 md:px-6">
           <div className="mx-auto max-w-[680px] text-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD] px-3 py-1 text-xs font-extrabold">Blog - about time</div>
@@ -113,8 +113,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRACKER — snap start */}
-      <section id="tracker" className="snap-start min-h-[100dvh] scroll-mt-16 border-t border-[#E9E7F5] bg-white/30">
+      {/* TRACKER */}
+      <section id="tracker" className="scroll-mt-16 py-6">
         <Tracker />
         <div className="pb-6 text-center">
           <button onClick={() => scrollTo("hero")} className="inline-flex items-center gap-1 rounded-full border border-[#E9E7F5] bg-white px-4 py-2 text-xs font-bold hover:bg-[#F2F3F8]">

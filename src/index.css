@@ -25,7 +25,7 @@
 }
 
 * { scrollbar-width: thin; scrollbar-color: rgba(201,182,255,0.5) transparent; }
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
