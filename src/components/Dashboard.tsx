@@ -23,7 +23,7 @@ export default function Dashboard() {
       await exportNodeToPng(exportRef.current, `scrolless-week-${week}.png`);
     } catch (e) {
       console.error(e);
-      alert("Export failed — try again. If charts are empty, add some time first.");
+      alert("Export failed - try again. If charts are empty, add some time first.");
     } finally {
       setExporting(false);
     }
@@ -31,17 +31,17 @@ export default function Dashboard() {
 
   return (
     <div className="mx-auto max-w-[1280px] px-4 pb-6 pt-6 md:px-6 md:pt-8">
-      {/* hero — pastel cute, asymmetric, mascots floating */}
+      {/* hero - pastel, asymmetric, mascots floating */}
       <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }}>
           <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD] px-3 py-1.5 text-xs font-extrabold text-[#1A1E2E]">
-            <Sparkles size={14} className="text-[#1A1E2E]" /> Cute tracker · No signup · Private on device
+            <Sparkles size={14} className="text-[#1A1E2E]" /> Tracker · No signup · Private on device
           </div>
           <h1 className="mt-4 text-[30px] font-extrabold leading-[0.95] tracking-tight md:text-[44px]">
             How much of your <span className="rounded-xl bg-[#D9CFFD] px-2 py-0.5">life</span> did you scroll away this week?
           </h1>
           <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#8A8EA6]">
-            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a cute PNG to hold yourself accountable.
+            Paste your iOS Screen Time or Android Digital Wellbeing numbers. See the real breakdown, feel the impact, and download a PNG to hold yourself accountable.
           </p>
           <div className="mt-5 flex flex-wrap gap-2.5">
             <button onClick={() => setGuideOpen(true)} className="inline-flex items-center gap-2 rounded-full border border-[#E9E7F5] bg-white px-4 py-2.5 text-sm font-bold shadow-cute hover:shadow-cute-hover hover:-translate-y-px transition">
@@ -58,7 +58,7 @@ export default function Dashboard() {
               <Download size={16} /> {exporting ? "Exporting..." : "Download PNG"} <ArrowRight size={14} />
             </button>
           </div>
-          <p className="mt-3 text-xs font-semibold text-[#8A8EA6]">Reclaim your hours from the digital abyss — one cute check at a time.</p>
+          <p className="mt-3 text-xs font-semibold text-[#8A8EA6]">Reclaim your hours from the digital abyss - one check at a time.</p>
         </motion.div>
 
         <motion.div
@@ -70,7 +70,7 @@ export default function Dashboard() {
           <div className="relative overflow-hidden rounded-[28px] border border-[#E9DEF8] bg-white p-5 shadow-cute">
             <StarSpike className="absolute -right-2 -top-2 h-[84px] w-[84px] rotate-6 hidden md:block" />
             <div className="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-[#8A8EA6]">
-              <span>Live preview · cute</span><span className="inline-flex items-center gap-1 text-[#6BCB77]"><span className="h-2 w-2 rounded-full bg-[#6BCB77] animate-pulse" /> Private</span>
+              <span>Live preview</span><span className="inline-flex items-center gap-1 text-[#6BCB77]"><span className="h-2 w-2 rounded-full bg-[#6BCB77] animate-pulse" /> Private</span>
             </div>
             <div className="mt-4 space-y-3">
               <div className="flex items-center gap-3 rounded-2xl border border-[#E9E7F5] bg-[#F2F3F8] p-3">
@@ -107,7 +107,7 @@ export default function Dashboard() {
 
       <div className="mt-8">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-sm font-extrabold flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#C9B6FF]" /> Export preview — this is what your PNG will capture</h3>
+          <h3 className="text-sm font-extrabold flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#C9B6FF]" /> Export preview - this is what your PNG will capture</h3>
           <span className="rounded-full border border-[#E9E7F5] bg-white px-3 py-1 text-xs font-bold text-[#8A8EA6]">2x crisp · pastel · shareable</span>
         </div>
         <div className="mt-3 max-w-[720px]">

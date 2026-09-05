@@ -33,11 +33,11 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
               <X size={16} />
             </button>
             <h3 id="guide-title" className="text-xl font-extrabold pr-8 text-[#1A1E2E]">How to find your weekly screen time</h3>
-            <p className="mt-1 text-sm font-semibold text-[#8A8EA6]">30-second check — then paste numbers below.</p>
+            <p className="mt-1 text-sm font-semibold text-[#8A8EA6]">30-second check - then paste numbers below.</p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-[#E9DEF8] bg-[#D9CFFD]/25 p-5">
-                <div className="flex items-center gap-2 text-sm font-extrabold text-[#1A1E2E]"><Apple size={18} /> iOS — Screen Time</div>
+                <div className="flex items-center gap-2 text-sm font-extrabold text-[#1A1E2E]"><Apple size={18} /> iOS - Screen Time</div>
                 <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-[#1A1E2E]/80">
                   <li>Open <span className="font-extrabold text-[#1A1E2E]">Settings</span></li>
                   <li>Tap <span className="font-extrabold text-[#1A1E2E]">Screen Time</span></li>
@@ -46,7 +46,7 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
                 </ol>
               </div>
               <div className="rounded-2xl border border-[#C8E6F2] bg-[#BFE6F7]/30 p-5">
-                <div className="flex items-center gap-2 text-sm font-extrabold text-[#1A1E2E]"><Smartphone size={18} /> Android — Digital Wellbeing</div>
+                <div className="flex items-center gap-2 text-sm font-extrabold text-[#1A1E2E]"><Smartphone size={18} /> Android - Digital Wellbeing</div>
                 <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-[#1A1E2E]/80">
                   <li>Open <span className="font-extrabold text-[#1A1E2E]">Settings</span></li>
                   <li>Tap <span className="font-extrabold text-[#1A1E2E]">Digital Wellbeing & parental controls</span></li>
@@ -57,10 +57,10 @@ export default function GuideModal({ open, onClose }: { open: boolean; onClose: 
             </div>
 
             <div className="mt-5 rounded-xl bg-[#FFF1B8] border border-[#FFE9A8] px-4 py-3 text-sm font-bold text-[#1A1E2E]">
-              Tip: exclude calls, maps and music — focus on doomscroll apps for the honest number.
+              Tip: exclude calls, maps and music - focus on doomscroll apps for the honest number.
             </div>
             <button onClick={onClose} className="mt-6 w-full rounded-full bg-[#C9B6FF] py-3 font-extrabold text-[#111827] hover:bg-[#B8A6F0] transition">
-              Got it — let me track
+              Got it - let me track
             </button>
           </motion.div>
         </div>

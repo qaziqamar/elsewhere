@@ -25,12 +25,12 @@ export default function App() {
       </main>
       <footer className="mx-auto mt-8 max-w-[1280px] border-t border-[#E9E7F5] bg-white/60 px-4 py-8 text-center backdrop-blur md:px-6">
         <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD]/30 px-3 py-1 text-xs font-bold text-[#1A1E2E]">
-          <span className="h-2 w-2 rounded-full bg-[#C9B6FF] animate-pulse" /> Cute build
+          <span className="h-2 w-2 rounded-full bg-[#C9B6FF] animate-pulse" /> Soft build
         </div>
         <p className="mt-3 text-[13px] font-semibold leading-relaxed text-[#1A1E2E]">
-          Built with curiosity by a vibe coder — <a href="https://x.com/siddamar_ai" target="_blank" rel="noopener noreferrer" className="font-extrabold underline decoration-[#C9B6FF] decoration-2 underline-offset-4 hover:text-[#6B5DD3]"> @siddamar_ai</a>
+          Built with curiosity by a vibe coder - <a href="https://x.com/siddamar_ai" target="_blank" rel="noopener noreferrer" className="font-extrabold underline decoration-[#C9B6FF] decoration-2 underline-offset-4 hover:text-[#6B5DD3]"> @siddamar_ai</a>
         </p>
-        <p className="mx-auto mt-1 max-w-[56ch] text-xs leading-relaxed text-[#8A8EA6]">Crafted with Impeccable + Taste skills, pastel cute system, and a lot of cartoon love. 100% client-side.</p>
+        <p className="mx-auto mt-1 max-w-[56ch] text-xs leading-relaxed text-[#8A8EA6]">Crafted with Impeccable + Taste skills, pastel system and a lot of cartoon love. 100% client-side.</p>
         <p className="mt-3 text-[11px] font-bold tracking-widest text-[#C4C7D8]">{new Date().getFullYear()} SCROLLESS</p>
       </footer>
     </div>

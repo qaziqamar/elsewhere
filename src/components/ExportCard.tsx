@@ -16,7 +16,7 @@ const ExportCard = forwardRef<HTMLDivElement>(function ExportCard(_, ref) {
     <div ref={ref} className="rounded-[20px] border border-[#E9DEF8] bg-white p-6 md:p-8 text-[#1A1E2E] shadow-cute">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C9B6FF] bg-[#D9CFFD] px-3 py-1 text-xs font-extrabold tracking-widest text-[#1A1E2E]">SCROLLESS — WEEKLY REPORT</div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C9B6FF] bg-[#D9CFFD] px-3 py-1 text-xs font-extrabold tracking-widest text-[#1A1E2E]">SCROLLESS - WEEKLY REPORT</div>
           <h3 className="mt-3 text-2xl font-extrabold leading-none">How much did you scroll away?</h3>
           <p className="mt-1 text-sm font-bold text-[#8A8EA6]">{date} · {apps.length} apps tracked</p>
         </div>
@@ -52,7 +52,7 @@ const ExportCard = forwardRef<HTMLDivElement>(function ExportCard(_, ref) {
       </div>
 
       <div className="mt-6 flex items-center justify-between text-[11px] font-bold text-[#8A8EA6] border-t border-dashed border-[#E9E7F5] pt-4">
-        <span>scrolless.app — Reclaim your hours</span>
+        <span>scrolless.app - Reclaim your hours</span>
         <span>Generated {date}</span>
       </div>
     </div>

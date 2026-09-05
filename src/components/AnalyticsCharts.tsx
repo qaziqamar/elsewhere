@@ -19,8 +19,8 @@ export default function AnalyticsCharts() {
     return (
       <div className="rounded-[20px] border border-dashed border-[#E9DEF8] bg-white p-10 text-center shadow-cute">
         <div className="mx-auto max-w-sm">
-          <div className="text-sm font-extrabold text-[#1A1E2E]">No data yet — move a slider ✨</div>
-          <div className="mt-1 text-sm font-semibold text-[#8A8EA6]">Add hours for any app and watch the cute breakdown come alive.</div>
+          <div className="text-sm font-extrabold text-[#1A1E2E]">No data yet - move a slider ✨</div>
+          <div className="mt-1 text-sm font-semibold text-[#8A8EA6]">Add hours for any app and watch the breakdown come alive.</div>
         </div>
       </div>
     );
@@ -100,7 +100,7 @@ export default function AnalyticsCharts() {
                 <span className="text-[#1A1E2E]/70">{ratio.toFixed(0)}% doom</span>
               </div>
               <div className="mt-3 rounded-xl bg-[#FFD7DE]/40 border border-[#FFD7DE] px-3 py-2 text-xs font-bold leading-relaxed text-[#1A1E2E]">
-                {ratio > 60 ? "High doomscroll — time to reclaim with a cute break!" : ratio > 35 ? "Moderate — small cuts compound fast." : "Lean week — keep the streak!"}
+                {ratio > 60 ? "High doomscroll - time to reclaim with a short break!" : ratio > 35 ? "Moderate - small cuts compound fast." : "Lean week - keep the streak!"}
               </div>
             </div>
             <div className="mt-4 h-[160px]">
@@ -130,7 +130,7 @@ export default function AnalyticsCharts() {
               <div className="rounded-xl bg-white border border-[#E9DEF8] px-2 py-3 shadow-sm"><div className="text-lg font-mono font-extrabold text-[#1A1E2E]">{impact.workouts}</div><div className="text-[11px] font-bold text-[#8A8EA6]">workouts</div></div>
               <div className="rounded-xl bg-white border border-[#E9DEF8] px-2 py-3 shadow-sm"><div className="text-lg font-mono font-extrabold text-[#1A1E2E]">{impact.sleepNights}</div><div className="text-[11px] font-bold text-[#8A8EA6]">nights</div></div>
             </div>
-            <div className="mt-3 text-xs font-semibold text-[#8A8EA6]">Based on <span className="font-mono font-extrabold text-[#1A1E2E]">{impact.hours}h</span> doomscroll. Small cute reclaims stack.</div>
+            <div className="mt-3 text-xs font-semibold text-[#8A8EA6]">Based on <span className="font-mono font-extrabold text-[#1A1E2E]">{impact.hours}h</span> doomscroll. Small reclaims stack.</div>
           </div>
         </div>
       </div>

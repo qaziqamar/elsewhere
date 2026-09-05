@@ -14,7 +14,7 @@ export function impactEquivalents(doomMins: number) {
       : workouts >= 4
         ? `That's ${workouts} workouts you skipped.`
         : hours >= 2
-          ? `That's ${movies} full movies — or a new skill started.`
+          ? `That's ${movies} full movies - or a new skill started.`
           : `Even ${Math.round(hours * 60)} minutes is a deep work block lost.`;
 
   return { hours: hours.toFixed(1), books, workouts, sleepNights, languageHours, movies, walks, primary };
