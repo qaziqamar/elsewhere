@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock3, BookOpen, Timer, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Clock3, BookOpen, Timer, Sparkles } from "lucide-react";
 import { StarSpike, CloudPuff } from "../components/CuteMascot";
 import { posts } from "../blog/posts";
 import Tracker from "./Tracker";
@@ -53,9 +53,7 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <button onClick={() => scrollTo("about")} className="mx-auto mt-8 flex flex-col items-center gap-1 text-xs font-bold text-[#8A8EA6] hover:text-[#1A1E2E]">
-          Scroll to About <ChevronDown size={16} className="animate-bounce" />
-        </button>
+
       </section>
 
       {/* ABOUT */}
@@ -84,7 +82,7 @@ export default function Home() {
               <button onClick={() => scrollTo("blog")} className="rounded-full border border-[#E9E7F5] bg-white px-5 py-2.5 text-sm font-bold hover:bg-[#F2F3F8]">Read about time</button>
             </div>
           </div>
-          <button onClick={() => scrollTo("blog")} className="mx-auto mt-6 flex items-center gap-1 text-xs font-bold text-[#8A8EA6] hover:text-[#1A1E2E]">Next: Blog <ChevronDown size={14} /></button>
+
         </div>
       </section>
 
@@ -109,7 +107,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <button onClick={() => scrollTo("tracker")} className="mx-auto mt-6 flex items-center gap-1 text-xs font-bold text-[#8A8EA6] hover:text-[#1A1E2E]">Next: Tracker <ChevronDown size={14} /></button>
+
         </div>
       </section>
 
