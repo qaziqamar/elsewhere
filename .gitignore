@@ -1,0 +1,69 @@
+# Build outputs (Vite / TS)
+dist
+dist-ssr
+build
+*.tsbuildinfo
+.vite/
+vite.config.*.timestamp-*.mjs
+
+# Dependencies
+node_modules
+
+# Coverage / cache / OS
+coverage
+.nyc_output
+.eslintcache
+.stylelintcache
+.parcel-cache
+.turbo
+.cache/
+tmp/
+temp/
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Env / local
+*.local
+.env*
+!.env.example
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Agent / AI tooling folders (local-only)
+.agents/
+.claude/
+.codex/
+.gemini/
+.kiro/
+.opencode/
+.pi/
+
+# Local planning / working docs (keep out of repo)
+DESIGN.md
+PRODUCT.md
+THEME_PLAN.md
+PLAN.md
+idea.md
+idea.txt
+Gemini_Generated_Image_*.jfif
+
+# Local-only tooling artifacts (redundant / machine-generated)
+.gitignore.vite
+skills-lock.json
