@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
-import { ArrowRight, Clock3, BookOpen, Timer, Sparkles } from "lucide-react";
+import { ArrowRight, Clock3, BookOpen, Timer } from "lucide-react";
 import { posts } from "../blog/posts";
 import Tracker from "./Tracker";
 import Hero3D from "../components/Hero3D";
@@ -168,11 +168,9 @@ export default function Home() {
           <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div className="lg:order-2">
               <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD] px-3 py-1.5 text-xs font-extrabold text-[#1A1E2E]">
-                  <Sparkles size={14} /> Free to use - No signup - No data saved
-                </div>
-                <h1 className="mt-5 font-display text-[32px] font-extrabold leading-[1.02] tracking-tight text-balance md:text-[52px]">
-                  Your week wasn't lived.<br />It was <span className="rounded-xl bg-[#D9CFFD] px-2">scrolled.</span>
+                <h1 className="mt-5 font-display font-extrabold leading-[1.02] tracking-tight">
+                  <span className="block text-[32px] md:text-[48px]">Your week wasn't lived.</span>
+                  <span className="block text-[28px] md:text-[42px]">It was <span className="rounded-xl bg-[#D9CFFD] px-2">scrolled</span> elsewhere.</span>
                 </h1>
                 <p className="mt-4 max-w-[58ch] text-[16px] leading-relaxed font-semibold text-[#475069]">
                   Paste your Screen Time numbers, see the real cost in books, workouts and nights, and download a dated PNG to keep yourself honest. We do not save your data - your PNG is your record.
