@@ -46,7 +46,7 @@ function Header() {
     <header className="sticky top-0 z-30 border-b border-[#E9DEF8] bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex h-[64px] max-w-[1280px] items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#111827] text-white font-extrabold">E</div>
+          <img src="/logo.png" alt="Elsewhere logo" className="h-9 w-9 rounded-xl object-cover" />
           <div className="leading-none">
             <div className="text-sm font-extrabold tracking-tight">Elsewhere</div>
             <div className="text-[11px] font-bold tracking-widest text-[#8A8EA6]">RECLAIM YOUR HOURS</div>
@@ -60,6 +60,33 @@ function Header() {
         </nav>
       </div>
     </header>
+  );
+}
+
+function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const scrollTo = (id: string) => {
+    if (location.pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  };
+  return (
+    <footer className="w-full bg-white/60 px-4 py-8 backdrop-blur md:px-6">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+        <nav aria-label="Footer" className="flex flex-col items-start gap-0.5">
+          <button onClick={() => scrollTo("hero")} className="rounded-md px-1 py-1 text-[13px] font-bold text-[#5F647E] decoration-[#C9B6FF] decoration-2 underline-offset-4 transition hover:text-[#1A1E2E] hover:underline focus-visible:outline-2 focus-visible:outline-[#6B5DD3]">Home</button>
+          <button onClick={() => scrollTo("about")} className="rounded-md px-1 py-1 text-[13px] font-bold text-[#5F647E] decoration-[#C9B6FF] decoration-2 underline-offset-4 transition hover:text-[#1A1E2E] hover:underline focus-visible:outline-2 focus-visible:outline-[#6B5DD3]">About</button>
+          <button onClick={() => scrollTo("blog")} className="rounded-md px-1 py-1 text-[13px] font-bold text-[#5F647E] decoration-[#C9B6FF] decoration-2 underline-offset-4 transition hover:text-[#1A1E2E] hover:underline focus-visible:outline-2 focus-visible:outline-[#6B5DD3]">Blog</button>
+        </nav>
+        <p className="max-w-[62ch] text-[13px] font-medium leading-[1.7] text-[#475069] [text-wrap:pretty] sm:max-w-[38ch] sm:text-right">
+          Built by an Asian developer who loves solving problems with vibe coding. Questions or feedback? Contact the builder on X — <a href="https://x.com/siddqamar_ai" target="_blank" rel="noopener noreferrer" className="font-extrabold text-[#1A1E2E] underline decoration-[#C9B6FF] decoration-2 underline-offset-4 transition hover:text-[#6B5DD3]">@siddqamar_ai</a>
+        </p>
+      </div>
+    </footer>
   );
 }
 
@@ -80,24 +107,7 @@ export default function App() {
             <Route path="*" element={<div className="p-10 text-center font-bold">404 - Not found</div>} />
           </Routes>
         </main>
-        <footer className="w-full bg-white/60 px-4 py-10 text-center backdrop-blur md:px-6">
-          <div className="mx-auto max-w-[1280px]">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#E9DEF8] bg-[#D9CFFD]/30 px-3 py-1 text-xs font-bold text-[#1A1E2E]">
-            <span className="h-2 w-2 rounded-full bg-[#C9B6FF] animate-pulse" /> Weekend build
-          </div>
-          <p className="mx-auto mt-3 max-w-[62ch] text-[13px] font-semibold leading-relaxed text-[#1A1E2E]">
-            I started with why: I wanted an honest mirror for my week — without another creepy app, signup, or server watching me. So I vibe-coded Elsewhere: paste your numbers, see where your hours went, keep the PNG.
-          </p>
-          <p className="mt-2 text-[13px] font-semibold leading-relaxed text-[#1A1E2E]">
-            Built by an Asian developer who loves solving problems with vibe coding — <a href="https://x.com/siddqamar_ai" target="_blank" rel="noopener noreferrer" className="font-extrabold underline decoration-[#C9B6FF] decoration-2 underline-offset-4 hover:text-[#6B5DD3]">@siddqamar_ai</a>
-          </p>
-          <p className="mt-2 text-[13px] font-extrabold text-[#1A1E2E]">
-            Questions or feedback? Contact the builder on X — <a href="https://x.com/siddqamar_ai" target="_blank" rel="noopener noreferrer" className="underline decoration-[#C9B6FF] decoration-2 underline-offset-4 hover:text-[#6B5DD3]">@siddqamar_ai</a>
-          </p>
-          <p className="mx-auto mt-2 max-w-[56ch] text-xs leading-relaxed text-[#8A8EA6]">Free to use · No data saved · 100% client-side. Your PNG with date is your record.</p>
-          <p className="mt-3 text-xs font-bold tracking-widest text-[#8A8EA6]">{new Date().getFullYear()} ELSEWHERE</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </BrowserRouter>
   );
