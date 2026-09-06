@@ -1,6 +1,7 @@
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
 import { useScreenTimeStore } from "../store/useScreenTimeStore";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 import { formatHM, totalMinutes } from "../lib/appData";
 import { impactEquivalents } from "../lib/impact";
 
@@ -8,6 +9,7 @@ const COLORS = ["#C9B6FF", "#A6D8F0", "#FFB6C5", "#B8E8D8", "#FFE9A8", "#D9CFFD"
 
 export default function AnalyticsCharts() {
   const apps = useScreenTimeStore((s) => s.apps);
+  const reduced = useReducedMotion();
   const data = apps.map((a) => ({ name: a.name, value: totalMinutes(a), color: a.color, cat: a.category })).filter((d) => d.value > 0);
   const doomMins = apps.filter((a) => a.category === "doomscroll").reduce((s, a) => s + totalMinutes(a), 0);
   const prodMins = apps.filter((a) => a.category === "productive").reduce((s, a) => s + totalMinutes(a), 0);
@@ -30,7 +32,7 @@ export default function AnalyticsCharts() {
 
   return (
     <div className="space-y-4">
-      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-3 gap-3">
+      <motion.div initial={{ opacity: 0, y: reduced ? 0 : 8 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div className="rounded-2xl border border-[#E9E7F5] bg-white p-4 shadow-cute">
           <div className="text-[11px] font-extrabold uppercase tracking-widest text-[#8A8EA6]">Total</div>
           <div className="mt-1 text-xl font-extrabold font-mono text-[#1A1E2E]">{formatHM(total)}</div>
@@ -57,7 +59,7 @@ export default function AnalyticsCharts() {
           <div className="mt-3 h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={74} outerRadius={108} paddingAngle={3} cornerRadius={8}>
+                <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={74} outerRadius={108} paddingAngle={3} cornerRadius={8} isAnimationActive={!reduced}>
                   {data.map((entry, i) => (
                     <Cell key={entry.name} fill={COLORS[i % COLORS.length]} stroke="#fff" strokeWidth={2} />
                   ))}
@@ -106,8 +108,8 @@ export default function AnalyticsCharts() {
             <div className="mt-4 h-[160px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data.slice(0, 6)}>
-                  <XAxis dataKey="name" tick={{ fill: "#8A8EA6", fontSize: 11, fontWeight: 700 }} axisLine={false} tickLine={false} interval={0} />
-                  <YAxis tick={{ fill: "#8A8EA6", fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
+                  <XAxis dataKey="name" tick={{ fill: "#5F647E", fontSize: 11, fontWeight: 700 }} axisLine={false} tickLine={false} interval="preserveStartEnd" />
+                  <YAxis tick={{ fill: "#5F647E", fontSize: 11 }} axisLine={false} tickLine={false} width={40} />
                   <Tooltip
                     cursor={{ fill: "rgba(201,182,255,0.12)" }}
                     content={({ active, payload }) => {
@@ -116,7 +118,7 @@ export default function AnalyticsCharts() {
                       return <div className="rounded-xl border border-[#E9DEF8] bg-white px-3 py-2 text-xs shadow-cute"><div className="font-extrabold text-[#1A1E2E]">{p.name}</div><div className="font-bold text-[#8A8EA6]">{formatHM(p.value)}</div></div>;
                     }}
                   />
-                  <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="#C9B6FF" />
+                  <Bar dataKey="value" radius={[8, 8, 0, 0]} fill="#C9B6FF" isAnimationActive={!reduced} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

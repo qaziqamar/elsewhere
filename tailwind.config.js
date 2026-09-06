@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Nunito","Plus Jakarta Sans","system-ui","sans-serif"],
+        display: ["Plus Jakarta Sans","Nunito","system-ui","sans-serif"],
         mono: ["JetBrains Mono","monospace"],
       },
       colors: {

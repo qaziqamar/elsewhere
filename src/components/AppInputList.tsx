@@ -27,12 +27,13 @@ export default function AppInputList() {
             <div className="text-xs font-bold text-[#8A8EA6]">{apps.length} apps · {formatHM(total)} total</div>
           </div>
         </div>
-        <div className="flex rounded-full bg-[#F2F3F8] p-1 text-xs border border-[#E9E7F5]">
+        <div className="flex rounded-full bg-[#F2F3F8] p-1 text-xs border border-[#E9E7F5]" role="group" aria-label="Filter apps">
           {(["all", "doom", "prod"] as const).map((k) => (
             <button
               key={k}
               onClick={() => setFilter(k)}
-              className={`rounded-full px-3.5 py-1.5 font-extrabold capitalize transition ${filter === k ? "bg-[#111827] text-white shadow" : "text-[#8A8EA6] hover:text-[#1A1E2E]"}`}
+              aria-pressed={filter === k}
+              className={`rounded-full px-3.5 py-1.5 min-h-[44px] font-extrabold capitalize transition ${filter === k ? "bg-[#111827] text-white shadow" : "text-[#8A8EA6] hover:text-[#1A1E2E]"}`}
             >
               {k === "all" ? "All" : k === "doom" ? "Doomscroll" : "Productive"}
             </button>
@@ -40,9 +41,9 @@ export default function AppInputList() {
         </div>
       </div>
 
-      <div className="space-y-2.5 px-3 py-3 md:px-4 max-h-[520px] overflow-auto">
+      <div className="space-y-2.5 px-3 py-3 md:px-4 lg:max-h-[520px] lg:overflow-auto">
         <AnimatePresence initial={false}>
-          {filtered.map((app, idx) => {
+          {filtered.map((app) => {
             const mins = totalMinutes(app);
             const sliderH = app.hours + app.minutes / 60;
             const tint = app.category === "doomscroll" ? "border-[#FFD7DE] bg-[#FFD7DE]/20" : app.category === "productive" ? "border-[#BFE6F7] bg-[#BFE6F7]/20" : "border-[#E9E7F5] bg-[#F2F3F8]";
@@ -53,7 +54,7 @@ export default function AppInputList() {
                 initial={{ opacity: 0, y: 8, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -6 }}
-                transition={{ delay: idx * 0.03, type: "spring", damping: 20, stiffness: 260 }}
+                transition={{ type: "spring", damping: 20, stiffness: 260 }}
                 className={`group flex flex-col gap-3 rounded-2xl border bg-white px-4 py-4 shadow-cute hover:shadow-cute-hover hover:-translate-y-px transition ${tint}`}
               >
                 <div className="flex items-start gap-3">
@@ -64,12 +65,13 @@ export default function AppInputList() {
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0 flex-1">
                         <div className="text-sm font-extrabold truncate text-[#1A1E2E] pr-1">{app.name}</div>
-                        <div className="mt-1.5 flex flex-wrap gap-1">
-                          {(["doomscroll", "productive", "neutral"] as const).map((c) => (
+                        <div className="mt-1.5 flex flex-wrap gap-1" role="group" aria-label={`${app.name} category`}>
+                          {((["doomscroll", "productive", "neutral"] as const)).map((c) => (
                             <button
                               key={c}
                               onClick={() => setCategory(app.id, c)}
-                              className={`rounded-full px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wide border transition whitespace-nowrap ${app.category === c ? (c === "doomscroll" ? "bg-[#FFB6C5] text-[#111827] border-[#FFB6C5]" : c === "productive" ? "bg-[#A6D8F0] text-[#111827] border-[#A6D8F0]" : "bg-[#111827] text-white border-[#111827]") : "border-[#E9E7F5] text-[#8A8EA6] hover:text-[#1A1E2E] hover:border-[#C9B6FF]"}`}
+                              aria-pressed={app.category === c}
+                              className={`rounded-full px-2.5 py-1 min-h-[36px] text-[10px] font-extrabold uppercase tracking-wide border transition whitespace-nowrap ${app.category === c ? (c === "doomscroll" ? "bg-[#FFB6C5] text-[#111827] border-[#FFB6C5]" : c === "productive" ? "bg-[#A6D8F0] text-[#111827] border-[#A6D8F0]" : "bg-[#111827] text-white border-[#111827]") : "border-[#E9E7F5] text-[#8A8EA6] hover:text-[#1A1E2E] hover:border-[#C9B6FF]"}`}
                             >
                               {c}
                             </button>
@@ -84,7 +86,7 @@ export default function AppInputList() {
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-1 pt-0.5">
                     {!["yt","netflix","x","linkedin","meta","telegram","whatsapp","instagram","snapchat"].includes(app.id) && (
-                      <button onClick={() => remove(app.id)} aria-label={`Remove ${app.name}`} className="rounded-full p-1.5 text-[#8A8EA6] hover:text-red-500 hover:bg-red-500/10 transition">
+                      <button onClick={() => remove(app.id)} aria-label={`Remove ${app.name}`} className="rounded-full p-2.5 min-h-[44px] min-w-[44px] grid place-items-center text-[#8A8EA6] hover:text-red-500 hover:bg-red-500/10 transition">
                         <Trash2 size={16} />
                       </button>
                     )}
@@ -116,6 +118,7 @@ export default function AppInputList() {
                         min={0}
                         max={168}
                         value={app.hours}
+                        aria-label={`${app.name} hours`}
                         onChange={(e) => setTime(app.id, parseInt(e.target.value || "0", 10), app.minutes)}
                         className="w-12 bg-transparent text-sm font-mono font-extrabold outline-none text-[#1A1E2E]"
                       />
@@ -127,6 +130,7 @@ export default function AppInputList() {
                         min={0}
                         max={59}
                         value={app.minutes}
+                        aria-label={`${app.name} minutes`}
                         onChange={(e) => setTime(app.id, app.hours, parseInt(e.target.value || "0", 10))}
                         className="w-12 bg-transparent text-sm font-mono font-extrabold outline-none text-[#1A1E2E]"
                       />
@@ -140,8 +144,10 @@ export default function AppInputList() {
       </div>
 
       <div className="border-t border-[#E9E7F5] p-4 bg-[#F2F3F8]/60">
+        <label htmlFor="custom-app-name" className="sr-only">Add custom app</label>
         <div className="flex gap-2">
           <input
+            id="custom-app-name"
             value={customName}
             onChange={(e) => setCustomName(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && customName.trim()) { addCustom(customName); setCustomName(""); } }}

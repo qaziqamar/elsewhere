@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^9.114.0",
-    "@react-three/fiber": "^9.7.0",
     "framer-motion": "^11.3.0",
     "html-to-image": "^1.11.11",
     "lucide-react": "^0.400.0",
@@ -19,14 +17,12 @@
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3",
     "recharts": "^2.12.7",
-    "three": "^0.160.0",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "@types/three": "^0.160.0",
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "^10.4.20",
     "oxlint": "^1.79.0",
